@@ -1,0 +1,132 @@
+﻿@model AdminLogin.Models.EbamApp
+
+@{
+    ViewBag.Title = "Application Details";
+    ViewBag.SubTitle = "Ebams";
+
+}
+
+<h2> @Html.DisplayFor(model => model.AppName)</h2>
+
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Usage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Usage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Host_IP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Host_IP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Public_IP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Public_IP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DB_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DB_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DB_IP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DB_IP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DB_Type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DB_Type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DB_user)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DB_user)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Server_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Server_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OS_Type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OS_Type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AppManager.Manager)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AppManager.Manager)
+        </dd>
+        <dt class="editor-label">
+            @Html.DisplayNameFor(model => model.FileId)
+        </dt>
+        <dd class="editor-field">
+            <ul class="attachment">
+                @foreach (var item in Model.EbamSupportFiles)
+                {
+                    <li>
+                        <a class="title" href="/EbamApps/Download/?p=@(item.Id + item.Extension)&d=@item.FileName">@item.FileName</a>
+                        @*<br />  <a href = "javascript:void(0);" data-id="@item.Id" class="deleteItem">X</a>*@
+                    </li>
+                }
+            </ul>
+        </dd>
+
+
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

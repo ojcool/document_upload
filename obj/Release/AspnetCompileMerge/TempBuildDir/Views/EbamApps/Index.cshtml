@@ -1,0 +1,156 @@
+﻿@model PagedList.IPagedList<AdminLogin.Models.EbamApp>
+@using PagedList.Mvc;
+@using PagedList;
+@{
+    ViewBag.Title = "EBAM List of Application";
+    ViewBag.SubTitle = "Ebam";
+
+}
+
+@*<p>
+        @Html.ActionLink("Create New", "Create")
+    </p>*@
+
+@section Menu {
+    @Scripts.Render("~/Scripts/Tables/Data/menu")
+}
+
+@Styles.Render("~/AdminLTE/plugins/datatables/css")
+
+<div class="row">
+    <div class="row col-sm-12">
+        @using (Html.BeginForm("Index", "EbamApps", FormMethod.Get))
+        {
+            <div class="col-sm-6">
+                <button class="btn btn-success"> <a href="@Url.Action("Create", "EbamApps")" style="color:#fff">Create New + </a></button>
+            </div>
+
+            <div class="col-sm-6">
+                <div id="example1_filter" class="dataTables_filter">
+                    @*<input type="search" name="search" class="form-control input-sm" placeholder="Search using Application Name / IP...." aria-controls="name">
+                        <input type="submit" name="submit" value="Search" />*@
+                    Search:  @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+                    <input type="submit" value="Search" />
+                </div>
+            </div>
+        }
+    </div>
+    <table id="example1" class="table table-bordered table-striped">
+        <thead style=" background-color:antiquewhite">
+            <tr>
+                <th>
+                   Application(s)
+                </th>
+                @*<th>
+                        @Html.DisplayNameFor(model => model.Usage)
+                    </th>*@
+                <th>
+                   Host IP
+                </th>
+                <th>
+                    Public IP / Load Balance IP
+                </th>
+                <th>
+                    Datebase Name
+                </th>
+                <th>
+                    Datebase IP
+                </th>
+                @*<th>
+                        @Html.DisplayNameFor(model => model.DB_Type)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DB_user)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Server_name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Type)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.OS_Type)
+                    </th>*@
+                <th>
+                   Status
+                </th>
+                <th>
+              Support Document
+                </th>
+                <th>
+                    @Html.ActionLink("App Manager", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
+                </th>
+                <th>
+                    @Html.ActionLink("Export to Excel", "ExportClientsListToExcel")
+                </th>
+            </tr>
+        </thead>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AppName)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.Usage)
+                    </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.Host_IP)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Public_IP)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DB_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DB_IP)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.DB_Type)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DB_user)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Server_name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Type)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.OS_Type)
+                    </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+                <td>
+                    @if (item.EbamSupportFiles.Count() == 0)
+                    {
+                        <span>No File</span>
+                    }
+                    else
+                    {
+                        <span>@item.EbamSupportFiles.Count() File(s)</span>
+                    }
+
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AppManager.Manager)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) 
+                    @*@Html.ActionLink("Delete", "Delete", new { id = item.Id })*@
+                </td>
+            </tr>
+        }
+
+    </table>
+    <br />
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+    @Html.PagedListPager(Model, page => Url.Action("Index",
+        new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+</div>

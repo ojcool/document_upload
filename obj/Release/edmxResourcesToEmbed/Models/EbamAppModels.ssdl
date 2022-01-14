@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Ebam_App_dbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="EbamApps">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AppName" Type="varchar(max)" />
+    <Property Name="Usage" Type="varchar(max)" />
+    <Property Name="Host_IP" Type="varchar" MaxLength="50" />
+    <Property Name="Public_IP" Type="varchar" MaxLength="50" />
+    <Property Name="DB_name" Type="varchar" MaxLength="50" />
+    <Property Name="DB_IP" Type="varchar" MaxLength="50" />
+    <Property Name="DB_Type" Type="varchar" MaxLength="50" />
+    <Property Name="DB_user" Type="varchar" MaxLength="50" />
+    <Property Name="Server_name" Type="varchar" MaxLength="50" />
+    <Property Name="Type" Type="varchar" MaxLength="50" />
+    <Property Name="OS_Type" Type="varchar" MaxLength="50" />
+    <Property Name="Status" Type="varchar" MaxLength="50" />
+    <Property Name="SupportId" Type="int" />
+    <Property Name="FileId" Type="int" />
+  </EntityType>
+  <EntityType Name="EbamSupports">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SupportId" Type="int" />
+    <Property Name="SupportId2" Type="int" />
+    <Property Name="DateCreated" Type="datetime" />
+    <Property Name="DateUpdate" Type="datetime" />
+    <Property Name="Duration" Type="varchar" MaxLength="50" />
+    <Property Name="StateDate" Type="datetime" />
+    <Property Name="EndDate" Type="datetime" />
+  </EntityType>
+  <EntityContainer Name="Ebam_App_dbModelStoreContainer">
+    <EntitySet Name="EbamApps" EntityType="Self.EbamApps" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EbamSupports" EntityType="Self.EbamSupports" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

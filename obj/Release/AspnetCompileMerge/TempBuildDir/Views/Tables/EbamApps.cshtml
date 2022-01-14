@@ -1,0 +1,186 @@
+﻿
+
+@model IPagedList<WebApplication.Models.EbamApp>
+@using PagedList.Mvc;
+@using PagedList;
+@{
+    ViewBag.Title = "EBAM List of Applications";
+    ViewBag.SubTitle = "DevOps";
+}
+
+@section Menu {
+    @Scripts.Render("~/Scripts/Tables/Data/menu")
+}
+
+@Styles.Render("~/AdminLTE/plugins/datatables/css")
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box">
+            <div class="box-header">
+
+                <div class="row col-sm-12">
+                    @using (Html.BeginForm("EbamApps", "Tables", FormMethod.Get))
+                    {
+                        <div class="col-sm-6">
+
+                            <button class="btn btn-success"> <a href="@Url.Action("CreateEbamApp", "Tables")" style="color:#fff">Create New + </a></button>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div id="example1_filter" class="dataTables_filter">
+                                <input type="search" name="search" class="form-control input-sm" placeholder="Search using Application Name / IP...." aria-controls="name">
+                                <input type="submit" name="submit" value="Search" />
+
+                            </div>
+                        </div>
+                    }
+                </div>
+                <br /><br />
+                @*<div class="row col-sm-12">
+                   
+                        <div class="col-sm-6">
+
+                           </div>
+
+                        <div class="col-sm-6">
+                            @Html.ActionLink("Export to Csv", "ExportClientsListToCSV")
+                            @Html.ActionLink("Export to Excel", "ExportClientsListToExcel")
+
+                        </div>
+                  
+                </div>*@
+              
+                <div class="box-body">
+                    <table id="example1" class="table table-bordered table-striped">
+                        <thead style=" background-color:antiquewhite">
+                            <tr>
+                                <th>
+                                    Application
+                                </th>
+
+                                <th>
+                                    HOST IP
+                                </th>
+
+                                <th>
+                                    DB  IP
+                                </th>
+                                <th>
+                                    DB Type
+                                </th>
+                                <th>
+                                    Status
+                                </th>
+
+                                <th>
+                                    App Manager
+                                </th>
+                                <th>Support Docs</th>
+                                <th></th>
+                                <th>
+                                    @Html.ActionLink("Export to Excel", "ExportClientsListToExcel")
+                                </th>
+
+
+                            </tr>
+                        </thead>
+                        @if (Model.Count() == 0)
+                        {
+                            <h2>No Records Found !</h2>
+                        }
+                        @foreach (var item in Model)
+                        {
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.AppName)
+                                    </td>
+
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Host_IP)
+                                    </td>
+
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.DB_IP)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.DB_Type)
+                                    </td>
+
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Status)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.AppManager.Manager)
+                                    </td>
+
+                                    <td>
+                                        @if (item.EbamSupportFiles.Count() == 0)
+                                        {
+                                            <span>No File</span>
+                                        }
+                                        else
+                                        {
+                                            <span>@item.EbamSupportFiles.Count() File(s)</span>
+                                        }
+
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("Edit", "EbamAppEdit", new { id = item.Id })
+
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("Details", "EbamAppsDetails", new { id = item.Id })
+
+                                    </td>
+                                    @*<td>
+                                      @Html.ActionLink("Delete", "EbamAppsDelete", new { id = item.Id })
+                                    </td>*@
+
+
+                                </tr>
+                            </tbody>
+                        }
+                        <tfoot>
+                            <tr>
+
+                                <th>
+                                    Application
+                                </th>
+
+                                <th>
+                                    HOST IP
+                                </th>
+
+                                <th>
+                                    DB  IP
+                                </th>
+                                <th>
+                                    DB Type
+                                </th>
+                                <th>
+                                    Status
+                                </th>
+                                <th>
+                                    App Manager
+                                </th>
+                                <th>Support Docs</th>
+                                <th></th>
+                                <th></th>
+
+                            </tr>
+                        </tfoot>
+                    </table>
+                    @Html.PagedListPager(Model, i => Url.Action("EbamApps", "Tables", new { i, search = Request.QueryString["search"] }))
+                </div>
+            </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/AdminLTE/plugins/datatables/js")
+    @*@Scripts.Render("~/Scripts/Tables/Data")*@
+}
+

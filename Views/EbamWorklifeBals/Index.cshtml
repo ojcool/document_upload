@@ -1,0 +1,111 @@
+﻿
+@model PagedList.IPagedList<AdminLogin.Models.EbamWorklifeBal>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Worklife Balance";
+    ViewBag.SubTitle = "Ebam";
+}
+@{
+    var weekday = DateTime.Now;
+   
+}
+@section Menu {
+    @Scripts.Render("~/Scripts/Tables/Data/menu")
+}
+
+@Styles.Render("~/AdminLTE/plugins/datatables/css")
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box">
+            <br />
+            <div class="row col-sm-12">
+                @using (Html.BeginForm("index", "EbamWorklifeBals", FormMethod.Get))
+                {
+                    <div class="col-sm-6">
+
+                        <button class="btn btn-success"> <a href="@Url.Action("Create", "EbamWorklifeBals")" style="color:#fff">Create New + </a></button>
+                    </div>
+                }
+             
+            </div>
+            <br />
+            <br />
+            <div class="box-body">
+                <table id="example11" class="table table-bordered table-striped">
+                    <thead style=" background-color:antiquewhite">
+                        <tr>
+                            <th>
+                               Staff Name
+                            </th>
+                            <th>
+                                WorkLife Balance Date
+                            </th>
+                            <th>
+                                Branch Office
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    @if (Model.Count() == 0)
+                    {
+                        <tr>No Records Found !</tr>
+                    }
+                    @foreach (var item in Model)
+                    {
+                        <tbody>
+                            @if (item.BalDate >= weekday)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.AppManager.Manager)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.BalDate)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Status)
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                                        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                                         @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    }
+
+                </table>
+              <br />
+
+                @Html.PagedListPager(Model, page => Url.Action("Index", new { page, pageSize = Model.PageSize }))
+                Showing @Model.FirstItemOnPage to @Model.LastItemOnPage of @Model.TotalItemCount
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @Scripts.Render("~/AdminLTE/plugins/datatables/js")
+    @Scripts.Render("~/Scripts/Tables/Data")
+
+@*<script>
+    $(function () {
+        $('#example1').DataTable({
+      
+      
+            "paging": true,
+            "lengthChange": false,
+            "searching": false,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false
+        });
+    });
+</script>*@
+
+}
+

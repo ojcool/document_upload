@@ -1,0 +1,226 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Ebam_App_dbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AppManager">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Manager" Type="varchar(max)" />
+    <Property Name="SupportId" Type="int" />
+  </EntityType>
+  <EntityType Name="EbamApps">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AppName" Type="varchar(max)" />
+    <Property Name="Usage" Type="varchar(max)" />
+    <Property Name="Host_IP" Type="varchar" MaxLength="50" />
+    <Property Name="Public_IP" Type="varchar" MaxLength="50" />
+    <Property Name="DB_name" Type="varchar" MaxLength="50" />
+    <Property Name="DB_IP" Type="varchar" MaxLength="50" />
+    <Property Name="DB_Type" Type="varchar" MaxLength="50" />
+    <Property Name="DB_user" Type="varchar" MaxLength="50" />
+    <Property Name="Server_name" Type="varchar" MaxLength="50" />
+    <Property Name="Type" Type="varchar" MaxLength="50" />
+    <Property Name="OS_Type" Type="varchar" MaxLength="50" />
+    <Property Name="Status" Type="varchar" MaxLength="50" />
+    <Property Name="SupportId" Type="int" />
+    <Property Name="FileId" Type="int" />
+  </EntityType>
+  <EntityType Name="EbamSupportFile">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FileName" Type="varchar(max)" />
+    <Property Name="Extension" Type="varchar" MaxLength="50" />
+    <Property Name="FileId" Type="int" />
+  </EntityType>
+  <EntityType Name="EbamSupports">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SupportId" Type="int" />
+    <Property Name="SupportId2" Type="int" />
+    <Property Name="DateCreated" Type="datetime" />
+    <Property Name="DateUpdate" Type="datetime" />
+    <Property Name="Duration" Type="varchar" MaxLength="50" />
+    <Property Name="StateDate" Type="date" />
+    <Property Name="EndDate" Type="date" />
+  </EntityType>
+  <EntityType Name="EbamWorklifeBal">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SupportId" Type="int" />
+    <Property Name="BalDate" Type="date" />
+    <Property Name="Status" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="LeaveEbam">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SupportId" Type="int" />
+    <Property Name="SupportId2" Type="int" />
+    <Property Name="OutstandLeave" Type="int" />
+    <Property Name="StartDate" Type="date" />
+    <Property Name="EndDate" Type="date" />
+    <Property Name="NoOfDays" Type="int" />
+    <Property Name="RemainDays" Type="int" />
+    <Property Name="BackUpStaff" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="LeaveEbamList">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SupportId" Type="int" />
+    <Property Name="OutstandLeave" Type="int" />
+    <Property Name="StartDate" Type="date" />
+    <Property Name="EndDate" Type="date" />
+    <Property Name="NoOfDays" Type="int" />
+    <Property Name="RemainDays" Type="int" />
+    <Property Name="BackUpStaff" Type="varchar(max)" />
+  </EntityType>
+  <Association Name="FK_EbamApps_AppManager">
+    <End Role="AppManager" Type="Self.AppManager" Multiplicity="0..1" />
+    <End Role="EbamApps" Type="Self.EbamApps" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AppManager">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EbamApps">
+        <PropertyRef Name="SupportId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EbamSupportFile_EbamApps">
+    <End Role="EbamApps" Type="Self.EbamApps" Multiplicity="0..1" />
+    <End Role="EbamSupportFile" Type="Self.EbamSupportFile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EbamApps">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EbamSupportFile">
+        <PropertyRef Name="FileId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EbamSupports_AppManager">
+    <End Role="AppManager" Type="Self.AppManager" Multiplicity="0..1" />
+    <End Role="EbamSupports" Type="Self.EbamSupports" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AppManager">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EbamSupports">
+        <PropertyRef Name="SupportId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EbamSupports_AppManager1">
+    <End Role="AppManager" Type="Self.AppManager" Multiplicity="0..1" />
+    <End Role="EbamSupports" Type="Self.EbamSupports" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AppManager">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EbamSupports">
+        <PropertyRef Name="SupportId2" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EbamWorklifeBal_AppManager">
+    <End Role="AppManager" Type="Self.AppManager" Multiplicity="0..1" />
+    <End Role="EbamWorklifeBal" Type="Self.EbamWorklifeBal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AppManager">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EbamWorklifeBal">
+        <PropertyRef Name="SupportId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LeaveEbam_AppManager">
+    <End Role="AppManager" Type="Self.AppManager" Multiplicity="0..1" />
+    <End Role="LeaveEbam" Type="Self.LeaveEbam" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AppManager">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="LeaveEbam">
+        <PropertyRef Name="SupportId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LeaveEbam_AppManager1">
+    <End Role="AppManager" Type="Self.AppManager" Multiplicity="0..1" />
+    <End Role="LeaveEbam" Type="Self.LeaveEbam" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AppManager">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="LeaveEbam">
+        <PropertyRef Name="SupportId2" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LeaveEbamList_AppManager">
+    <End Role="AppManager" Type="Self.AppManager" Multiplicity="0..1" />
+    <End Role="LeaveEbamList" Type="Self.LeaveEbamList" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AppManager">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="LeaveEbamList">
+        <PropertyRef Name="SupportId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Ebam_App_dbModelStoreContainer">
+    <EntitySet Name="AppManager" EntityType="Self.AppManager" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EbamApps" EntityType="Self.EbamApps" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EbamSupportFile" EntityType="Self.EbamSupportFile" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EbamSupports" EntityType="Self.EbamSupports" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EbamWorklifeBal" EntityType="Self.EbamWorklifeBal" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LeaveEbam" EntityType="Self.LeaveEbam" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LeaveEbamList" EntityType="Self.LeaveEbamList" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_EbamApps_AppManager" Association="Self.FK_EbamApps_AppManager">
+      <End Role="AppManager" EntitySet="AppManager" />
+      <End Role="EbamApps" EntitySet="EbamApps" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EbamSupportFile_EbamApps" Association="Self.FK_EbamSupportFile_EbamApps">
+      <End Role="EbamApps" EntitySet="EbamApps" />
+      <End Role="EbamSupportFile" EntitySet="EbamSupportFile" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EbamSupports_AppManager" Association="Self.FK_EbamSupports_AppManager">
+      <End Role="AppManager" EntitySet="AppManager" />
+      <End Role="EbamSupports" EntitySet="EbamSupports" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EbamSupports_AppManager1" Association="Self.FK_EbamSupports_AppManager1">
+      <End Role="AppManager" EntitySet="AppManager" />
+      <End Role="EbamSupports" EntitySet="EbamSupports" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EbamWorklifeBal_AppManager" Association="Self.FK_EbamWorklifeBal_AppManager">
+      <End Role="AppManager" EntitySet="AppManager" />
+      <End Role="EbamWorklifeBal" EntitySet="EbamWorklifeBal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LeaveEbam_AppManager" Association="Self.FK_LeaveEbam_AppManager">
+      <End Role="AppManager" EntitySet="AppManager" />
+      <End Role="LeaveEbam" EntitySet="LeaveEbam" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LeaveEbam_AppManager1" Association="Self.FK_LeaveEbam_AppManager1">
+      <End Role="AppManager" EntitySet="AppManager" />
+      <End Role="LeaveEbam" EntitySet="LeaveEbam" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LeaveEbamList_AppManager" Association="Self.FK_LeaveEbamList_AppManager">
+      <End Role="AppManager" EntitySet="AppManager" />
+      <End Role="LeaveEbamList" EntitySet="LeaveEbamList" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

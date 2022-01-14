@@ -1,0 +1,242 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Ebam_App_dbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="AppManager">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Manager" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="SupportId" Type="Int32" />
+    <NavigationProperty Name="EbamApps" Relationship="Self.FK_EbamApps_AppManager" FromRole="AppManager" ToRole="EbamApps" />
+    <NavigationProperty Name="EbamSupports" Relationship="Self.FK_EbamSupports_AppManager" FromRole="AppManager" ToRole="EbamSupports" />
+    <NavigationProperty Name="EbamSupports1" Relationship="Self.FK_EbamSupports_AppManager1" FromRole="AppManager" ToRole="EbamSupports" />
+    <NavigationProperty Name="EbamWorklifeBals" Relationship="Self.FK_EbamWorklifeBal_AppManager" FromRole="AppManager" ToRole="EbamWorklifeBal" />
+    <NavigationProperty Name="LeaveEbamLists" Relationship="Self.FK_LeaveEbamList_AppManager" FromRole="AppManager" ToRole="LeaveEbamList" />
+    <NavigationProperty Name="LeaveEbams" Relationship="Ebam_App_dbModel.FK_LeaveEbam_AppManager" FromRole="AppManager" ToRole="LeaveEbam" />
+    <NavigationProperty Name="LeaveEbams1" Relationship="Ebam_App_dbModel.FK_LeaveEbam_AppManager1" FromRole="AppManager" ToRole="LeaveEbam" />
+  </EntityType>
+  <EntityType Name="EbamApp">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AppName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Usage" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Host_IP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Public_IP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DB_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DB_IP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DB_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DB_user" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Server_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="OS_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SupportId" Type="Int32" />
+    <Property Name="FileId" Type="Int32" />
+    <NavigationProperty Name="AppManager" Relationship="Self.FK_EbamApps_AppManager" FromRole="EbamApps" ToRole="AppManager" />
+    <NavigationProperty Name="EbamSupportFiles" Relationship="Self.FK_EbamSupportFile_EbamApps" FromRole="EbamApps" ToRole="EbamSupportFile" />
+  </EntityType>
+  <EntityType Name="EbamSupportFile">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FileName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Extension" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FileId" Type="Int32" />
+    <NavigationProperty Name="EbamApp" Relationship="Self.FK_EbamSupportFile_EbamApps" FromRole="EbamSupportFile" ToRole="EbamApps" />
+  </EntityType>
+  <EntityType Name="EbamSupport">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SupportId" Type="Int32" />
+    <Property Name="SupportId2" Type="Int32" />
+    <Property Name="DateCreated" Type="DateTime" Precision="3" />
+    <Property Name="DateUpdate" Type="DateTime" Precision="3" />
+    <Property Name="Duration" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="StateDate" Type="DateTime" Precision="3" />
+    <Property Name="EndDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="AppManager" Relationship="Self.FK_EbamSupports_AppManager" FromRole="EbamSupports" ToRole="AppManager" />
+    <NavigationProperty Name="AppManager1" Relationship="Self.FK_EbamSupports_AppManager1" FromRole="EbamSupports" ToRole="AppManager" />
+  </EntityType>
+  <EntityType Name="EbamWorklifeBal">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SupportId" Type="Int32" />
+    <Property Name="BalDate" Type="DateTime" Precision="0" />
+    <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="AppManager" Relationship="Self.FK_EbamWorklifeBal_AppManager" FromRole="EbamWorklifeBal" ToRole="AppManager" />
+  </EntityType>
+  <EntityType Name="LeaveEbamList">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SupportId" Type="Int32" />
+    <Property Name="OutstandLeave" Type="Int32" />
+    <Property Name="StartDate" Type="DateTime" Precision="0" />
+    <Property Name="EndDate" Type="DateTime" Precision="0" />
+    <Property Name="NoOfDays" Type="Int32" />
+    <Property Name="RemainDays" Type="Int32" />
+    <Property Name="BackUpStaff" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="AppManager" Relationship="Self.FK_LeaveEbamList_AppManager" FromRole="LeaveEbamList" ToRole="AppManager" />
+  </EntityType>
+  <Association Name="FK_EbamApps_AppManager">
+    <End Role="AppManager" Type="Self.AppManager" Multiplicity="0..1" />
+    <End Role="EbamApps" Type="Self.EbamApp" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AppManager">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EbamApps">
+        <PropertyRef Name="SupportId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EbamSupports_AppManager">
+    <End Role="AppManager" Type="Self.AppManager" Multiplicity="0..1" />
+    <End Role="EbamSupports" Type="Self.EbamSupport" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AppManager">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EbamSupports">
+        <PropertyRef Name="SupportId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EbamSupports_AppManager1">
+    <End Role="AppManager" Type="Self.AppManager" Multiplicity="0..1" />
+    <End Role="EbamSupports" Type="Self.EbamSupport" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AppManager">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EbamSupports">
+        <PropertyRef Name="SupportId2" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EbamWorklifeBal_AppManager">
+    <End Role="AppManager" Type="Self.AppManager" Multiplicity="0..1" />
+    <End Role="EbamWorklifeBal" Type="Self.EbamWorklifeBal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AppManager">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EbamWorklifeBal">
+        <PropertyRef Name="SupportId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LeaveEbamList_AppManager">
+    <End Role="AppManager" Type="Self.AppManager" Multiplicity="0..1" />
+    <End Role="LeaveEbamList" Type="Self.LeaveEbamList" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AppManager">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="LeaveEbamList">
+        <PropertyRef Name="SupportId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EbamSupportFile_EbamApps">
+    <End Role="EbamApps" Type="Self.EbamApp" Multiplicity="0..1" />
+    <End Role="EbamSupportFile" Type="Self.EbamSupportFile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EbamApps">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EbamSupportFile">
+        <PropertyRef Name="FileId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Ebam_App_dbEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AppManagers" EntityType="Self.AppManager" />
+    <EntitySet Name="EbamApps" EntityType="Self.EbamApp" />
+    <EntitySet Name="EbamSupportFiles" EntityType="Self.EbamSupportFile" />
+    <EntitySet Name="EbamSupports" EntityType="Self.EbamSupport" />
+    <EntitySet Name="EbamWorklifeBals" EntityType="Self.EbamWorklifeBal" />
+    <EntitySet Name="LeaveEbamLists" EntityType="Self.LeaveEbamList" />
+    <AssociationSet Name="FK_EbamApps_AppManager" Association="Self.FK_EbamApps_AppManager">
+      <End Role="AppManager" EntitySet="AppManagers" />
+      <End Role="EbamApps" EntitySet="EbamApps" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EbamSupports_AppManager" Association="Self.FK_EbamSupports_AppManager">
+      <End Role="AppManager" EntitySet="AppManagers" />
+      <End Role="EbamSupports" EntitySet="EbamSupports" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EbamSupports_AppManager1" Association="Self.FK_EbamSupports_AppManager1">
+      <End Role="AppManager" EntitySet="AppManagers" />
+      <End Role="EbamSupports" EntitySet="EbamSupports" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EbamWorklifeBal_AppManager" Association="Self.FK_EbamWorklifeBal_AppManager">
+      <End Role="AppManager" EntitySet="AppManagers" />
+      <End Role="EbamWorklifeBal" EntitySet="EbamWorklifeBals" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LeaveEbamList_AppManager" Association="Self.FK_LeaveEbamList_AppManager">
+      <End Role="AppManager" EntitySet="AppManagers" />
+      <End Role="LeaveEbamList" EntitySet="LeaveEbamLists" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EbamSupportFile_EbamApps" Association="Self.FK_EbamSupportFile_EbamApps">
+      <End Role="EbamApps" EntitySet="EbamApps" />
+      <End Role="EbamSupportFile" EntitySet="EbamSupportFiles" />
+    </AssociationSet>
+    <EntitySet Name="LeaveEbams" EntityType="Ebam_App_dbModel.LeaveEbam" />
+    <AssociationSet Name="FK_LeaveEbam_AppManager" Association="Ebam_App_dbModel.FK_LeaveEbam_AppManager">
+      <End Role="AppManager" EntitySet="AppManagers" />
+      <End Role="LeaveEbam" EntitySet="LeaveEbams" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LeaveEbam_AppManager1" Association="Ebam_App_dbModel.FK_LeaveEbam_AppManager1">
+      <End Role="AppManager" EntitySet="AppManagers" />
+      <End Role="LeaveEbam" EntitySet="LeaveEbams" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="LeaveEbam">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SupportId" Type="Int32" />
+    <Property Name="SupportId2" Type="Int32" />
+    <Property Name="OutstandLeave" Type="Int32" />
+    <Property Name="StartDate" Type="DateTime" Precision="0" />
+    <Property Name="EndDate" Type="DateTime" Precision="0" />
+    <Property Name="NoOfDays" Type="Int32" />
+    <Property Name="RemainDays" Type="Int32" />
+    <Property Name="BackUpStaff" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="AppManager" Relationship="Ebam_App_dbModel.FK_LeaveEbam_AppManager" FromRole="LeaveEbam" ToRole="AppManager" />
+    <NavigationProperty Name="AppManager1" Relationship="Ebam_App_dbModel.FK_LeaveEbam_AppManager1" FromRole="LeaveEbam" ToRole="AppManager" />
+  </EntityType>
+  <Association Name="FK_LeaveEbam_AppManager">
+    <End Type="Ebam_App_dbModel.AppManager" Role="AppManager" Multiplicity="0..1" />
+    <End Type="Ebam_App_dbModel.LeaveEbam" Role="LeaveEbam" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AppManager">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="LeaveEbam">
+        <PropertyRef Name="SupportId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LeaveEbam_AppManager1">
+    <End Type="Ebam_App_dbModel.AppManager" Role="AppManager" Multiplicity="0..1" />
+    <End Type="Ebam_App_dbModel.LeaveEbam" Role="LeaveEbam" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AppManager">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="LeaveEbam">
+        <PropertyRef Name="SupportId2" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

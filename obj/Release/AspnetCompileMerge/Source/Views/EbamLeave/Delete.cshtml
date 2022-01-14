@@ -1,0 +1,88 @@
+﻿@model AdminLogin.Models.LeaveEbam
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>LeaveEbam</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.OutstandLeave)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OutstandLeave)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StartDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StartDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EndDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EndDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NoOfDays)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NoOfDays)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RemainDays)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RemainDays)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BackUpStaff)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BackUpStaff)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AppManager.Manager)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AppManager.Manager)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AppManager1.Manager)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AppManager1.Manager)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

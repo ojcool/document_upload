@@ -1,0 +1,120 @@
+﻿@model PagedList.IPagedList<AdminLogin.Models.EbamSupport>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "EBAM Service Desk Manager";
+    ViewBag.SubTitle = "DevOps";
+}
+@{
+    var weekday = DateTime.Now;
+    var day = weekday.ToString();
+    var message = "";
+}
+@section Menu {
+    @Scripts.Render("~/Scripts/Tables/Data/menu")
+}
+
+@Styles.Render("~/AdminLTE/plugins/datatables/css")
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box">
+            <br />
+            <div class="row col-sm-12">
+                @using (Html.BeginForm("index", "EbamSupports", FormMethod.Get))
+                {
+                    <div class="col-sm-6">
+
+                        <button class="btn btn-success"> <a href="@Url.Action("Create", "EbamSupports")" style="color:#fff">Create New + </a></button>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div id="example1_filter" class="dataTables_filter">
+                            @*<input type="search" name="search" class="form-control input-sm" placeholder="Search / " aria-controls="name">
+                                <input type="submit" name="submit" value="Search" />*@
+                            Find by name: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+                            <input type="submit" value="Search" />
+
+                        </div>
+                    </div>
+                }
+            </div>
+
+            <br />
+            <br />
+            <table class="table table-bordered table-striped">
+                    <thead style=" background-color:antiquewhite">
+                <tr>
+                    <th>
+                        App Manager
+                        @*@ViewBag.TotalStudents*@
+
+                    </th>
+                    <th>
+                        App Manager
+                    </th>
+                    @*<th>
+                @Html.DisplayNameFor(model => model.Duration)
+            </th>*@
+                    <th>
+                      Start Date
+                    </th>
+                    <th>
+                     End Date
+                    </th>
+
+                    <th></th>
+                </tr>
+</thead>
+                @foreach (var item in Model)
+                {
+                <tbody>
+                    @if (item.EndDate >= weekday)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.AppManager.Manager)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.AppManager1.Manager)
+                            </td>
+                            @*<td>
+                    @Html.DisplayFor(modelItem => item.Duration)
+                </td>*@
+                            <td>
+                                @Html.DisplayFor(modelItem => item.StateDate)
+                            </td>
+                            @*@if (@DateTime.Now == item.StateDate)
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StateDate)
+                    </td>
+
+                }else{
+                    <td>
+                       Tre
+                    </td>
+                }*@
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.EndDate)
+                            </td>
+
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                                @Html.ActionLink("Details", "Details", new { id = item.Id })
+                                @*|
+                                @Html.ActionLink("Delete", "Delete", new { id = item.Id })*@
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+                        }
+
+                </table>
+            <br />
+            @Html.PagedListPager(Model, page=> Url.Action("Index", new {page,pageSize = Model.PageSize }))
+            Showing @Model.FirstItemOnPage to @Model.LastItemOnPage of @Model.TotalItemCount SD Managers List
+
+        </div>
+    </div>
+</div>

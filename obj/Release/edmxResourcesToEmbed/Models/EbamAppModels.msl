@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Ebam_App_dbModelStoreContainer" CdmEntityContainer="Ebam_App_dbEntities">
+    <EntitySetMapping Name="EbamApps">
+      <EntityTypeMapping TypeName="Ebam_App_dbModel.EbamApp">
+        <MappingFragment StoreEntitySet="EbamApps">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="AppName" ColumnName="AppName" />
+          <ScalarProperty Name="Usage" ColumnName="Usage" />
+          <ScalarProperty Name="Host_IP" ColumnName="Host_IP" />
+          <ScalarProperty Name="Public_IP" ColumnName="Public_IP" />
+          <ScalarProperty Name="DB_name" ColumnName="DB_name" />
+          <ScalarProperty Name="DB_IP" ColumnName="DB_IP" />
+          <ScalarProperty Name="DB_Type" ColumnName="DB_Type" />
+          <ScalarProperty Name="DB_user" ColumnName="DB_user" />
+          <ScalarProperty Name="Server_name" ColumnName="Server_name" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="OS_Type" ColumnName="OS_Type" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="SupportId" ColumnName="SupportId" />
+          <ScalarProperty Name="FileId" ColumnName="FileId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EbamSupports">
+      <EntityTypeMapping TypeName="Ebam_App_dbModel.EbamSupport">
+        <MappingFragment StoreEntitySet="EbamSupports">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="SupportId" ColumnName="SupportId" />
+          <ScalarProperty Name="SupportId2" ColumnName="SupportId2" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateUpdate" ColumnName="DateUpdate" />
+          <ScalarProperty Name="Duration" ColumnName="Duration" />
+          <ScalarProperty Name="StateDate" ColumnName="StateDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

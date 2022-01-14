@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ebam_app_dbModelStoreContainer" CdmEntityContainer="ebam_app_dbEntities">
+    <EntitySetMapping Name="AppManagers">
+      <EntityTypeMapping TypeName="ebam_app_dbModel.AppManager">
+        <MappingFragment StoreEntitySet="AppManager">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Manager" ColumnName="Manager" />
+          <ScalarProperty Name="SupportId" ColumnName="SupportId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EbamApps">
+      <EntityTypeMapping TypeName="ebam_app_dbModel.EbamApp">
+        <MappingFragment StoreEntitySet="EbamApps">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="AppName" ColumnName="AppName" />
+          <ScalarProperty Name="Usage" ColumnName="Usage" />
+          <ScalarProperty Name="Host_IP" ColumnName="Host_IP" />
+          <ScalarProperty Name="Public_IP" ColumnName="Public_IP" />
+          <ScalarProperty Name="DB_name" ColumnName="DB_name" />
+          <ScalarProperty Name="DB_IP" ColumnName="DB_IP" />
+          <ScalarProperty Name="DB_Type" ColumnName="DB_Type" />
+          <ScalarProperty Name="DB_user" ColumnName="DB_user" />
+          <ScalarProperty Name="Server_name" ColumnName="Server_name" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="OS_Type" ColumnName="OS_Type" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="SupportId" ColumnName="SupportId" />
+          <ScalarProperty Name="FileId" ColumnName="FileId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EbamSupportFiles">
+      <EntityTypeMapping TypeName="ebam_app_dbModel.EbamSupportFile">
+        <MappingFragment StoreEntitySet="EbamSupportFile">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="Extension" ColumnName="Extension" />
+          <ScalarProperty Name="FileId" ColumnName="FileId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EbamSupports">
+      <EntityTypeMapping TypeName="ebam_app_dbModel.EbamSupport">
+        <MappingFragment StoreEntitySet="EbamSupports">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="SupportId" ColumnName="SupportId" />
+          <ScalarProperty Name="SupportId2" ColumnName="SupportId2" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateUpdate" ColumnName="DateUpdate" />
+          <ScalarProperty Name="Duration" ColumnName="Duration" />
+          <ScalarProperty Name="StateDate" ColumnName="StateDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EbamWorklifeBals">
+      <EntityTypeMapping TypeName="ebam_app_dbModel.EbamWorklifeBal">
+        <MappingFragment StoreEntitySet="EbamWorklifeBal">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="SupportId" ColumnName="SupportId" />
+          <ScalarProperty Name="BalDate" ColumnName="BalDate" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LeaveEbams">
+      <EntityTypeMapping TypeName="ebam_app_dbModel.LeaveEbam">
+        <MappingFragment StoreEntitySet="LeaveEbam">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="SupportId" ColumnName="SupportId" />
+          <ScalarProperty Name="SupportId2" ColumnName="SupportId2" />
+          <ScalarProperty Name="OutstandLeave" ColumnName="OutstandLeave" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="NoOfDays" ColumnName="NoOfDays" />
+          <ScalarProperty Name="RemainDays" ColumnName="RemainDays" />
+          <ScalarProperty Name="BackUpStaff" ColumnName="BackUpStaff" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LeaveEbamLists">
+      <EntityTypeMapping TypeName="ebam_app_dbModel.LeaveEbamList">
+        <MappingFragment StoreEntitySet="LeaveEbamList">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="SupportId" ColumnName="SupportId" />
+          <ScalarProperty Name="OutstandLeave" ColumnName="OutstandLeave" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="NoOfDays" ColumnName="NoOfDays" />
+          <ScalarProperty Name="RemainDays" ColumnName="RemainDays" />
+          <ScalarProperty Name="BackUpStaff" ColumnName="BackUpStaff" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

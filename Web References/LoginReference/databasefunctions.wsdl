@@ -1,0 +1,1245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetCustomerDetails">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CustomerId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCustomerDetailsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCustomerDetailsResult" type="tns:CustomerDetails" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="CustomerDetails">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="First_Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Middle_Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Last_Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Full_Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Address" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DOB" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Sex" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Phone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AltPhone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BVN" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetCustomerDetailsBVN">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BVN" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCustomerDetailsBVNResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCustomerDetailsBVNResult" type="tns:CustomerDetailsBVN" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="CustomerDetailsBVN">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:CustomerDetails">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Customer_No" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="BranchCode" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="AccountStatus" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="CustomerStatus" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="BlackListed" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GetAccountDetails">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AccountNo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAccountDetailsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAccountDetailsResult" type="tns:AccountDetail" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="AccountDetail">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="BranchCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BranchName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ProductCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AccountNo" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DateOpened" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="AccTitle" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CustomerId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CurrencyCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AccountStatus" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Ac_Stat_Dormant" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Amt_Od_Limit" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="AmountOnHold" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="AvailableBal" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="Acc_Status" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Ac_Stat_Block" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Ac_Stat_No_Cr" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Ac_Stat_No_Dr" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Record_Stat" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="BookBalance" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="BVN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ProductName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AccountFrozen" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetStaffDetailsByEmail">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetStaffDetailsByEmailResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetStaffDetailsByEmailResult" type="tns:StaffDetails" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="StaffDetails">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="StaffId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Samaccount" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Gender" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Phone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AccountNo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="State" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Department" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DepartmentCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="GradeCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Grade" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Street" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="JobTitle" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="JobTitleId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BranchCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BranchName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Division" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetAllStaffExceed">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllStaffExceedResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllStaffExceedResult" type="tns:ArrayOfStaffDetails" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfStaffDetails">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="StaffDetails" nillable="true" type="tns:StaffDetails" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetStaffDetailsByJobId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="JobTitleId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetStaffDetailsByJobIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetStaffDetailsByJobIdResult" type="tns:ArrayOfStaffDetails" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckEODStatus">
+        <s:complexType />
+      </s:element>
+      <s:element name="CheckEODStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CheckEODStatusResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetADUsers">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetADUsersResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetADUsersResult" type="tns:ArrayOfADUserDetails" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfADUserDetails">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ADUserDetails" nillable="true" type="tns:ADUserDetails" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ADUserDetails">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DisplayName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Department" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="employeeID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FirstName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LastName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Title" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsAccountActive" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ActiveDirectoryAuthuser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserEmail" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ActiveDirectoryAuthuserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ActiveDirectoryAuthuserResult" type="tns:ADUserResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ADUserResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ADUser">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="AuthMsg" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="AuthCode" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="IsAccountActive" type="s:boolean" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ADUser">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Department" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DisplayName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="employeeID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FirstName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LastName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Title" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsAuthenticated" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="AuthenticationMessage" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="passTransactionToAgent">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="transactionReference" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sourceAccount" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sourceAccountName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="destinationAccount" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sourceNarration" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="destinationNarration" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="amount" type="s:decimal" />
+            <s:element minOccurs="0" maxOccurs="1" name="beneficiary" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sourceBranch" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="destBranch" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="applicationKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UBSUserID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UBSPassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TransactionCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="paymentAgentTable" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="CurrencyCode" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="passTransactionToAgentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="passTransactionToAgentResult" type="tns:paymentAgentTransactionStatus" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="paymentAgentTransactionStatus">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="DestinationBranch" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorDescription" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="initialSourceBalance" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="SourceBranch" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="transactionAmount" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="transactionStatus" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="wrapperBalance" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="wrapperReference" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="wrapperResponse" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="passTransactionToAgentReversal">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="transactionReference" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sourceAccount" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sourceAccountName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="destinationAccount" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="narration" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="amount" type="s:decimal" />
+            <s:element minOccurs="0" maxOccurs="1" name="beneficiary" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sourceBranch" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="destBranch" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="applicationKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UBSUserID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UBSPassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TransactionCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="paymentAgentTable" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="CurrencyCode" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="passTransactionToAgentReversalResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="passTransactionToAgentReversalResult" type="tns:paymentAgentTransactionStatus" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueryTransactionStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReferenceNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="paymentAgentTable" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueryTransactionStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="QueryTransactionStatusResult" type="tns:paymentAgentTransactionStatus" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendOTP">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MobileNumber" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AppName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Duration" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="User" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendOTPResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SendOTPResult" type="tns:OTPResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="OTPResponse">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="StatusMessage" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ValidateOTP">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="OTP" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Mobile" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="InternetbankingId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValidateOTPResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ValidateOTPResult" type="tns:OTPResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BranchList">
+        <s:complexType />
+      </s:element>
+      <s:element name="BranchListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BranchListResult" type="tns:ArrayOfBranchDetails" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfBranchDetails">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="BranchDetails" nillable="true" type="tns:BranchDetails" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="BranchDetails">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="BranchCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BranchName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BranchAddress" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="VerifyMobilePin">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InternetbankingId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Pin" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="VerifyMobilePinResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="VerifyMobilePinResult" type="tns:MobilePinResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="MobilePinResponse">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="StatusMessage" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SearchUserAD">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SamAccount" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchUserADResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SearchUserADResult" type="tns:ADUserResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ProcessJournalEntry">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DEBatchDebitList" type="tns:ArrayOfDEBatchEntries" />
+            <s:element minOccurs="0" maxOccurs="1" name="Currency" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UBSUserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="BranchCode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfDEBatchEntries">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="DEBatchEntries" nillable="true" type="tns:DEBatchEntries" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DEBatchEntries">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Amount" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="DRCR" type="tns:DRCR" />
+          <s:element minOccurs="1" maxOccurs="1" name="ACORGL" type="tns:ACOrGL" />
+          <s:element minOccurs="0" maxOccurs="1" name="Account" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CCY" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="trxncode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="instrumentno" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="narration" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="customer" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="branchcode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="referenceno" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="costcentre" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="DRCR">
+        <s:restriction base="s:string">
+          <s:enumeration value="D" />
+          <s:enumeration value="C" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="ACOrGL">
+        <s:restriction base="s:string">
+          <s:enumeration value="A" />
+          <s:enumeration value="G" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="ProcessJournalEntryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ProcessJournalEntryResult" type="tns:DEBatchResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="DEBatchResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:DoStopChequeResponse" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="DoStopChequeResponse">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="StatusMessage" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ReferenceNumber" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="getBVNDetails">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="bvn" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getBVNDetailsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getBVNDetailsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsBVNValid">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="bvn" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsBVNValidResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IsBVNValidResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LogBVNUpdate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="request" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LogBVNUpdateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LogBVNUpdateResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="NotifyCustomer">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="bvn" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="custId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="NotifyCustomerResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="NotifyCustomerResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="upDateBVN">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="bvn" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="custId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="upDateBVNResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="upDateBVNResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetCustomerDetailsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCustomerDetails" />
+  </wsdl:message>
+  <wsdl:message name="GetCustomerDetailsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCustomerDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCustomerDetailsBVNSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCustomerDetailsBVN" />
+  </wsdl:message>
+  <wsdl:message name="GetCustomerDetailsBVNSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCustomerDetailsBVNResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAccountDetailsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAccountDetails" />
+  </wsdl:message>
+  <wsdl:message name="GetAccountDetailsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAccountDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetStaffDetailsByEmailSoapIn">
+    <wsdl:part name="parameters" element="tns:GetStaffDetailsByEmail" />
+  </wsdl:message>
+  <wsdl:message name="GetStaffDetailsByEmailSoapOut">
+    <wsdl:part name="parameters" element="tns:GetStaffDetailsByEmailResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllStaffExceedSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllStaffExceed" />
+  </wsdl:message>
+  <wsdl:message name="GetAllStaffExceedSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllStaffExceedResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetStaffDetailsByJobIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetStaffDetailsByJobId" />
+  </wsdl:message>
+  <wsdl:message name="GetStaffDetailsByJobIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetStaffDetailsByJobIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="CheckEODStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:CheckEODStatus" />
+  </wsdl:message>
+  <wsdl:message name="CheckEODStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:CheckEODStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetADUsersSoapIn">
+    <wsdl:part name="parameters" element="tns:GetADUsers" />
+  </wsdl:message>
+  <wsdl:message name="GetADUsersSoapOut">
+    <wsdl:part name="parameters" element="tns:GetADUsersResponse" />
+  </wsdl:message>
+  <wsdl:message name="ActiveDirectoryAuthuserSoapIn">
+    <wsdl:part name="parameters" element="tns:ActiveDirectoryAuthuser" />
+  </wsdl:message>
+  <wsdl:message name="ActiveDirectoryAuthuserSoapOut">
+    <wsdl:part name="parameters" element="tns:ActiveDirectoryAuthuserResponse" />
+  </wsdl:message>
+  <wsdl:message name="passTransactionToAgentSoapIn">
+    <wsdl:part name="parameters" element="tns:passTransactionToAgent" />
+  </wsdl:message>
+  <wsdl:message name="passTransactionToAgentSoapOut">
+    <wsdl:part name="parameters" element="tns:passTransactionToAgentResponse" />
+  </wsdl:message>
+  <wsdl:message name="passTransactionToAgentReversalSoapIn">
+    <wsdl:part name="parameters" element="tns:passTransactionToAgentReversal" />
+  </wsdl:message>
+  <wsdl:message name="passTransactionToAgentReversalSoapOut">
+    <wsdl:part name="parameters" element="tns:passTransactionToAgentReversalResponse" />
+  </wsdl:message>
+  <wsdl:message name="QueryTransactionStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:QueryTransactionStatus" />
+  </wsdl:message>
+  <wsdl:message name="QueryTransactionStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:QueryTransactionStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendOTPSoapIn">
+    <wsdl:part name="parameters" element="tns:SendOTP" />
+  </wsdl:message>
+  <wsdl:message name="SendOTPSoapOut">
+    <wsdl:part name="parameters" element="tns:SendOTPResponse" />
+  </wsdl:message>
+  <wsdl:message name="ValidateOTPSoapIn">
+    <wsdl:part name="parameters" element="tns:ValidateOTP" />
+  </wsdl:message>
+  <wsdl:message name="ValidateOTPSoapOut">
+    <wsdl:part name="parameters" element="tns:ValidateOTPResponse" />
+  </wsdl:message>
+  <wsdl:message name="BranchListSoapIn">
+    <wsdl:part name="parameters" element="tns:BranchList" />
+  </wsdl:message>
+  <wsdl:message name="BranchListSoapOut">
+    <wsdl:part name="parameters" element="tns:BranchListResponse" />
+  </wsdl:message>
+  <wsdl:message name="VerifyMobilePinSoapIn">
+    <wsdl:part name="parameters" element="tns:VerifyMobilePin" />
+  </wsdl:message>
+  <wsdl:message name="VerifyMobilePinSoapOut">
+    <wsdl:part name="parameters" element="tns:VerifyMobilePinResponse" />
+  </wsdl:message>
+  <wsdl:message name="SearchUserADSoapIn">
+    <wsdl:part name="parameters" element="tns:SearchUserAD" />
+  </wsdl:message>
+  <wsdl:message name="SearchUserADSoapOut">
+    <wsdl:part name="parameters" element="tns:SearchUserADResponse" />
+  </wsdl:message>
+  <wsdl:message name="ProcessJournalEntrySoapIn">
+    <wsdl:part name="parameters" element="tns:ProcessJournalEntry" />
+  </wsdl:message>
+  <wsdl:message name="ProcessJournalEntrySoapOut">
+    <wsdl:part name="parameters" element="tns:ProcessJournalEntryResponse" />
+  </wsdl:message>
+  <wsdl:message name="getBVNDetailsSoapIn">
+    <wsdl:part name="parameters" element="tns:getBVNDetails" />
+  </wsdl:message>
+  <wsdl:message name="getBVNDetailsSoapOut">
+    <wsdl:part name="parameters" element="tns:getBVNDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IsBVNValidSoapIn">
+    <wsdl:part name="parameters" element="tns:IsBVNValid" />
+  </wsdl:message>
+  <wsdl:message name="IsBVNValidSoapOut">
+    <wsdl:part name="parameters" element="tns:IsBVNValidResponse" />
+  </wsdl:message>
+  <wsdl:message name="LogBVNUpdateSoapIn">
+    <wsdl:part name="parameters" element="tns:LogBVNUpdate" />
+  </wsdl:message>
+  <wsdl:message name="LogBVNUpdateSoapOut">
+    <wsdl:part name="parameters" element="tns:LogBVNUpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="NotifyCustomerSoapIn">
+    <wsdl:part name="parameters" element="tns:NotifyCustomer" />
+  </wsdl:message>
+  <wsdl:message name="NotifyCustomerSoapOut">
+    <wsdl:part name="parameters" element="tns:NotifyCustomerResponse" />
+  </wsdl:message>
+  <wsdl:message name="upDateBVNSoapIn">
+    <wsdl:part name="parameters" element="tns:upDateBVN" />
+  </wsdl:message>
+  <wsdl:message name="upDateBVNSoapOut">
+    <wsdl:part name="parameters" element="tns:upDateBVNResponse" />
+  </wsdl:message>
+  <wsdl:portType name="databasefunctionsSoap">
+    <wsdl:operation name="GetCustomerDetails">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Method to get a customer's details using Customer Id</wsdl:documentation>
+      <wsdl:input message="tns:GetCustomerDetailsSoapIn" />
+      <wsdl:output message="tns:GetCustomerDetailsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerDetailsBVN">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Method to get a customer's details using BVN</wsdl:documentation>
+      <wsdl:input message="tns:GetCustomerDetailsBVNSoapIn" />
+      <wsdl:output message="tns:GetCustomerDetailsBVNSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAccountDetails">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Method to get an account detail using Account number</wsdl:documentation>
+      <wsdl:input message="tns:GetAccountDetailsSoapIn" />
+      <wsdl:output message="tns:GetAccountDetailsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStaffDetailsByEmail">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Method to get staff details using email address</wsdl:documentation>
+      <wsdl:input message="tns:GetStaffDetailsByEmailSoapIn" />
+      <wsdl:output message="tns:GetStaffDetailsByEmailSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllStaffExceed">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Method to get all staff details on exceed</wsdl:documentation>
+      <wsdl:input message="tns:GetAllStaffExceedSoapIn" />
+      <wsdl:output message="tns:GetAllStaffExceedSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStaffDetailsByJobId">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Method to get staff details on exceed by Job Title</wsdl:documentation>
+      <wsdl:input message="tns:GetStaffDetailsByJobIdSoapIn" />
+      <wsdl:output message="tns:GetStaffDetailsByJobIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckEODStatus">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Method to check when EOD is running</wsdl:documentation>
+      <wsdl:input message="tns:CheckEODStatusSoapIn" />
+      <wsdl:output message="tns:CheckEODStatusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetADUsers">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Method to return a list of all AD users</wsdl:documentation>
+      <wsdl:input message="tns:GetADUsersSoapIn" />
+      <wsdl:output message="tns:GetADUsersSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ActiveDirectoryAuthuser">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Method to authenticate a user on the AD</wsdl:documentation>
+      <wsdl:input message="tns:ActiveDirectoryAuthuserSoapIn" />
+      <wsdl:output message="tns:ActiveDirectoryAuthuserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="passTransactionToAgent">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Method to pass transaction to payment agent</wsdl:documentation>
+      <wsdl:input message="tns:passTransactionToAgentSoapIn" />
+      <wsdl:output message="tns:passTransactionToAgentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="passTransactionToAgentReversal">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Method to reverse a successful transaction on payment agent</wsdl:documentation>
+      <wsdl:input message="tns:passTransactionToAgentReversalSoapIn" />
+      <wsdl:output message="tns:passTransactionToAgentReversalSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryTransactionStatus">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Requery transaction sent to payment agent</wsdl:documentation>
+      <wsdl:input message="tns:QueryTransactionStatusSoapIn" />
+      <wsdl:output message="tns:QueryTransactionStatusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendOTP">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Method to generate an OTP and send to Customoer</wsdl:documentation>
+      <wsdl:input message="tns:SendOTPSoapIn" />
+      <wsdl:output message="tns:SendOTPSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateOTP">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Method to validate OTP</wsdl:documentation>
+      <wsdl:input message="tns:ValidateOTPSoapIn" />
+      <wsdl:output message="tns:ValidateOTPSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BranchList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Method to get the list of all Diamond Bank Branches</wsdl:documentation>
+      <wsdl:input message="tns:BranchListSoapIn" />
+      <wsdl:output message="tns:BranchListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="VerifyMobilePin">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Method to verify a customer's diamond mobile pin</wsdl:documentation>
+      <wsdl:input message="tns:VerifyMobilePinSoapIn" />
+      <wsdl:output message="tns:VerifyMobilePinSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchUserAD">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Method to get user's details from the AD</wsdl:documentation>
+      <wsdl:input message="tns:SearchUserADSoapIn" />
+      <wsdl:output message="tns:SearchUserADSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ProcessJournalEntry">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Method to process Journal Entry</wsdl:documentation>
+      <wsdl:input message="tns:ProcessJournalEntrySoapIn" />
+      <wsdl:output message="tns:ProcessJournalEntrySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getBVNDetails">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Method to return customer details using BVN</wsdl:documentation>
+      <wsdl:input message="tns:getBVNDetailsSoapIn" />
+      <wsdl:output message="tns:getBVNDetailsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IsBVNValid">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Method to validate BVN</wsdl:documentation>
+      <wsdl:input message="tns:IsBVNValidSoapIn" />
+      <wsdl:output message="tns:IsBVNValidSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LogBVNUpdate">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Method to log bvn customer details update with NIBSS</wsdl:documentation>
+      <wsdl:input message="tns:LogBVNUpdateSoapIn" />
+      <wsdl:output message="tns:LogBVNUpdateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="NotifyCustomer">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Method to notify customer of bvn details change</wsdl:documentation>
+      <wsdl:input message="tns:NotifyCustomerSoapIn" />
+      <wsdl:output message="tns:NotifyCustomerSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="upDateBVN">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Method to update customer details using BVN</wsdl:documentation>
+      <wsdl:input message="tns:upDateBVNSoapIn" />
+      <wsdl:output message="tns:upDateBVNSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="databasefunctionsSoap" type="tns:databasefunctionsSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetCustomerDetails">
+      <soap:operation soapAction="http://tempuri.org/GetCustomerDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerDetailsBVN">
+      <soap:operation soapAction="http://tempuri.org/GetCustomerDetailsBVN" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAccountDetails">
+      <soap:operation soapAction="http://tempuri.org/GetAccountDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStaffDetailsByEmail">
+      <soap:operation soapAction="http://tempuri.org/GetStaffDetailsByEmail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllStaffExceed">
+      <soap:operation soapAction="http://tempuri.org/GetAllStaffExceed" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStaffDetailsByJobId">
+      <soap:operation soapAction="http://tempuri.org/GetStaffDetailsByJobId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckEODStatus">
+      <soap:operation soapAction="http://tempuri.org/CheckEODStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetADUsers">
+      <soap:operation soapAction="http://tempuri.org/GetADUsers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActiveDirectoryAuthuser">
+      <soap:operation soapAction="http://tempuri.org/ActiveDirectoryAuthuser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="passTransactionToAgent">
+      <soap:operation soapAction="http://tempuri.org/passTransactionToAgent" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="passTransactionToAgentReversal">
+      <soap:operation soapAction="http://tempuri.org/passTransactionToAgentReversal" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryTransactionStatus">
+      <soap:operation soapAction="http://tempuri.org/QueryTransactionStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendOTP">
+      <soap:operation soapAction="http://tempuri.org/SendOTP" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateOTP">
+      <soap:operation soapAction="http://tempuri.org/ValidateOTP" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BranchList">
+      <soap:operation soapAction="http://tempuri.org/BranchList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VerifyMobilePin">
+      <soap:operation soapAction="http://tempuri.org/VerifyMobilePin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchUserAD">
+      <soap:operation soapAction="http://tempuri.org/SearchUserAD" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProcessJournalEntry">
+      <soap:operation soapAction="http://tempuri.org/ProcessJournalEntry" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBVNDetails">
+      <soap:operation soapAction="http://tempuri.org/getBVNDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsBVNValid">
+      <soap:operation soapAction="http://tempuri.org/IsBVNValid" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LogBVNUpdate">
+      <soap:operation soapAction="http://tempuri.org/LogBVNUpdate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="NotifyCustomer">
+      <soap:operation soapAction="http://tempuri.org/NotifyCustomer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="upDateBVN">
+      <soap:operation soapAction="http://tempuri.org/upDateBVN" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="databasefunctionsSoap12" type="tns:databasefunctionsSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetCustomerDetails">
+      <soap12:operation soapAction="http://tempuri.org/GetCustomerDetails" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerDetailsBVN">
+      <soap12:operation soapAction="http://tempuri.org/GetCustomerDetailsBVN" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAccountDetails">
+      <soap12:operation soapAction="http://tempuri.org/GetAccountDetails" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStaffDetailsByEmail">
+      <soap12:operation soapAction="http://tempuri.org/GetStaffDetailsByEmail" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllStaffExceed">
+      <soap12:operation soapAction="http://tempuri.org/GetAllStaffExceed" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStaffDetailsByJobId">
+      <soap12:operation soapAction="http://tempuri.org/GetStaffDetailsByJobId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckEODStatus">
+      <soap12:operation soapAction="http://tempuri.org/CheckEODStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetADUsers">
+      <soap12:operation soapAction="http://tempuri.org/GetADUsers" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActiveDirectoryAuthuser">
+      <soap12:operation soapAction="http://tempuri.org/ActiveDirectoryAuthuser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="passTransactionToAgent">
+      <soap12:operation soapAction="http://tempuri.org/passTransactionToAgent" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="passTransactionToAgentReversal">
+      <soap12:operation soapAction="http://tempuri.org/passTransactionToAgentReversal" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryTransactionStatus">
+      <soap12:operation soapAction="http://tempuri.org/QueryTransactionStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendOTP">
+      <soap12:operation soapAction="http://tempuri.org/SendOTP" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateOTP">
+      <soap12:operation soapAction="http://tempuri.org/ValidateOTP" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BranchList">
+      <soap12:operation soapAction="http://tempuri.org/BranchList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VerifyMobilePin">
+      <soap12:operation soapAction="http://tempuri.org/VerifyMobilePin" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchUserAD">
+      <soap12:operation soapAction="http://tempuri.org/SearchUserAD" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProcessJournalEntry">
+      <soap12:operation soapAction="http://tempuri.org/ProcessJournalEntry" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBVNDetails">
+      <soap12:operation soapAction="http://tempuri.org/getBVNDetails" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsBVNValid">
+      <soap12:operation soapAction="http://tempuri.org/IsBVNValid" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LogBVNUpdate">
+      <soap12:operation soapAction="http://tempuri.org/LogBVNUpdate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="NotifyCustomer">
+      <soap12:operation soapAction="http://tempuri.org/NotifyCustomer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="upDateBVN">
+      <soap12:operation soapAction="http://tempuri.org/upDateBVN" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="databasefunctions">
+    <wsdl:port name="databasefunctionsSoap" binding="tns:databasefunctionsSoap">
+      <soap:address location="http://10.0.37.9/WrapperLibrary/databasefunctions.asmx" />
+    </wsdl:port>
+    <wsdl:port name="databasefunctionsSoap12" binding="tns:databasefunctionsSoap12">
+      <soap12:address location="http://10.0.37.9/WrapperLibrary/databasefunctions.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

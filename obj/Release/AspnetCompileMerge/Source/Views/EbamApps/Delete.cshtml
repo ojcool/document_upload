@@ -1,0 +1,136 @@
+﻿@model AdminLogin.Models.EbamApp
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>EbamApp</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.AppName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AppName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Usage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Usage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Host_IP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Host_IP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Public_IP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Public_IP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DB_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DB_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DB_IP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DB_IP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DB_Type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DB_Type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DB_user)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DB_user)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Server_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Server_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OS_Type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OS_Type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FileId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FileId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AppManager.Manager)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AppManager.Manager)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

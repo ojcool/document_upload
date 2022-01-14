@@ -1,0 +1,148 @@
+﻿@model PagedList.IPagedList<WebApplication.Models.LeaveEbamList>
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "EBAM Team Leave Management";
+    ViewBag.SubTitle = "DevOps";
+}
+
+@section Menu {
+    @Scripts.Render("~/Scripts/Tables/Data/menu")
+}
+
+@Styles.Render("~/AdminLTE/plugins/datatables/css")
+
+
+@*@using (Html.BeginForm())
+    {
+        @Html.EditorForModel("LeaveDevopList")
+        <br />
+    }
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#StartDate").datepicker();
+        }
+    </script>*@
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box">
+            <div class="box-header">
+                @*<h3 class="box-title">
+                <a href="@Url.Action("CreateEbamApp", "Forms")">Create New App</a>
+            </h3>*@
+                @* <a href="@Url.Action("General", "Forms")">TEST</a>*@
+            </div>
+            @*<div>
+            @using (Html.BeginForm("EbamApps", "Tables", FormMethod.Get))
+            {
+                <input type="text" name="search" placeholder="Enter Application Name / IP....." />
+                <input type="submit" name="submit" value="Search" />
+            }
+        </div>*@
+
+            <div class="row col-sm-12">
+                @using (Html.BeginForm("index", "LeaveDevopLists", FormMethod.Get))
+                {
+                    <div class="col-sm-6">
+
+                        <button class="btn btn-success"> <a href="@Url.Action("Create", "index")" style="color:#fff">Create New + </a></button>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div id="example1_filter" class="dataTables_filter">
+                            @*<input type="search" name="search" class="form-control input-sm" placeholder="Search / " aria-controls="name">
+        <input type="submit" name="submit" value="Search" />*@
+                            Find by name: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+                            <input type="submit" value="Search" />
+
+                        </div>
+                    </div>
+                }
+            </div>
+           
+            <div class="box-body">
+                <table id="example1" class="table table-bordered table-striped">
+                    <thead style=" background-color:antiquewhite">
+                        <tr>
+                            <th>
+
+                                @Html.ActionLink("Staff Name", "LeaveList", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
+                            </th>
+
+                            <th>
+                                Outstanding Days
+                            </th>
+
+                            <th>
+                                @Html.ActionLink("Start Date", "LeaveList", new { sortOrder = ViewBag.DateSortParm, currentFilter = ViewBag.CurrentFilter })
+                            </th>
+                            <th>
+                                End Date
+                            </th>
+                            <th>
+                                No Of Days
+                            </th>
+                            <th>
+                                Back Up Staff
+                            </th>
+                            <th></th>
+
+                        </tr>
+                    </thead>
+                    @if (Model.Count() == 0)
+                    {
+                        <h2>No Records Found !</h2>
+                    }
+                    @foreach (var item in Model)
+                    {
+                        <tbody>
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.StaffName)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.OutstandLeave)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.StartDate)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.EndDate)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.NoOfDays)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.BackUp)
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                                    @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                                    @*@Html.ActionLink("Delete", "Delete", new { id = item.id })*@
+                                </td>
+                            </tr>
+                        </tbody>
+                    }
+
+                </table>
+                @*  @Html.PagedListPager(Model, i => Url.Action("LeaveList", "Tables", new { i, search = Request.QueryString["search"] }))*@
+                <br />
+                Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+                @Html.PagedListPager(Model, page => Url.Action("LeaveList",
+                    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/AdminLTE/plugins/datatables/js")
+
+}
+

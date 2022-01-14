@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="09d94572c9964c798ab048a1c7f242bb" Name="Diagram1">
+        <EntityTypeShape EntityType="ebam_app_dbModel.AppManager" Width="1.5" PointX="0.75" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ebam_app_dbModel.EbamApp" Width="1.5" PointX="3" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ebam_app_dbModel.EbamSupportFile" Width="1.5" PointX="5.25" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ebam_app_dbModel.EbamSupport" Width="1.5" PointX="3" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ebam_app_dbModel.EbamWorklifeBal" Width="1.5" PointX="3" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ebam_app_dbModel.LeaveEbam" Width="1.5" PointX="3" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ebam_app_dbModel.LeaveEbamList" Width="1.5" PointX="3" PointY="17.125" IsExpanded="true" />
+        <AssociationConnector Association="ebam_app_dbModel.FK_EbamApps_AppManager" ManuallyRouted="false" />
+        <AssociationConnector Association="ebam_app_dbModel.FK_EbamSupports_AppManager" ManuallyRouted="false" />
+        <AssociationConnector Association="ebam_app_dbModel.FK_EbamSupports_AppManager1" ManuallyRouted="false" />
+        <AssociationConnector Association="ebam_app_dbModel.FK_EbamWorklifeBal_AppManager" ManuallyRouted="false" />
+        <AssociationConnector Association="ebam_app_dbModel.FK_LeaveEbam_AppManager" ManuallyRouted="false" />
+        <AssociationConnector Association="ebam_app_dbModel.FK_LeaveEbam_AppManager1" ManuallyRouted="false" />
+        <AssociationConnector Association="ebam_app_dbModel.FK_LeaveEbamList_AppManager" ManuallyRouted="false" />
+        <AssociationConnector Association="ebam_app_dbModel.FK_EbamSupportFile_EbamApps" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
