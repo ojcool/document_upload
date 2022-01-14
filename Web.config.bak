@@ -82,13 +82,13 @@
       </basicHttpBinding>
     </bindings>
     <client>
-      <endpoint address="" binding="basicHttpBinding" bindingConfiguration="databasefunctionsSoap" contract="LoginServices.databasefunctionsSoap" name="databasefunctionsSoap" />
+      <endpoint address="http://10.0.37.9/WrapperLibrary/databasefunctions.asmx" binding="basicHttpBinding" bindingConfiguration="databasefunctionsSoap" contract="LoginServices.databasefunctionsSoap" name="databasefunctionsSoap" />
     </client>
   </system.serviceModel>
   <applicationSettings>
     <AdminLogin.Properties.Settings>
       <setting name="AdminLogin_LoginReference_databasefunctions" serializeAs="String">
-        <value></value>
+        <value>http://10.0.37.9/WrapperLibrary/databasefunctions.asmx</value>
       </setting>
     </AdminLogin.Properties.Settings>
   </applicationSettings>
